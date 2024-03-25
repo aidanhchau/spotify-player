@@ -8,6 +8,7 @@ import { getCurrentlyPlaying } from "./api/getCurrentlyPlaying";
 import { addToPlaylist } from "./api/addToPlaylist";
 import { getError } from "./helpers/getError";
 import { getUserPlaylists } from "./api/getUserPlaylists";
+import { removePlaylistItems } from "./api/removePlaylistItems";
 
 export default async function Command() {
   await setSpotifyClient();
@@ -40,7 +41,13 @@ export default async function Command() {
       playlistId: currentMonthPlaylistId,
       trackUris: [currentlyPlayingData.item.uri],
     });
-    await showHUD(`Added ${currentlyPlayingData.item.name} to ${currentMonth}`);
+    await showHUD(`Added ${currentlyPlayingData.item.name} to ${currentMonthPlaylist.name}`);
+
+    await removePlaylistItems({
+      playlistId: currentPlaylist.split(":")[2],
+      trackUris: [currentlyPlayingData.item.uri],
+    });
+    await showHUD(`Removed ${currentlyPlayingData.item.name} from Processing`);
   } catch (error) {
     await showHUD("Something went wrong");
     console.log("addPlayingSongToMonthlyPlaylist.ts Error:", getError(error));
