@@ -353,7 +353,7 @@
       "name": "addPlayingSongToMonthlyPlaylist",
       "title": "Add Playing Song to Monthly Playlist",
       "subtitle": "Spotify",
-      "description": "Add the currently playing song to the monthly playlist.",
+      "description": "Add the currently playing song from Processing to the monthly playlist.",
       "mode": "no-view",
       "disabledByDefault": true
     }
