@@ -6,10 +6,7 @@
   "icon": "extension-icon.png",
   "author": "mattisssa",
   "owner": "aidanhchau",
-  "categories": [
-    "Media",
-    "Productivity"
-  ],
+  "categories": ["Media", "Productivity"],
   "contributors": [
     "peduarte",
     "sxn",
@@ -342,6 +339,22 @@
       "subtitle": "Spotify",
       "description": "See your queue.",
       "mode": "view",
+      "disabledByDefault": true
+    },
+    {
+      "name": "testNext",
+      "title": "Test Next",
+      "subtitle": "Spotify",
+      "description": "Test command to skip the to the next track.",
+      "mode": "no-view",
+      "disabledByDefault": true
+    },
+    {
+      "name": "addPlayingSongToMonthlyPlaylist",
+      "title": "Add Playing Song to Monthly Playlist",
+      "subtitle": "Spotify",
+      "description": "Add the currently playing song to the monthly playlist.",
+      "mode": "no-view",
       "disabledByDefault": true
     }
   ],
