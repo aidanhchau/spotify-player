@@ -15,9 +15,6 @@ export default async function Command() {
 
   const currentlyPlayingData = await getCurrentlyPlaying();
   const currentPlaylist = currentlyPlayingData.context.uri;
-  if (currentPlaylist != "spotify:playlist:5Gb7IXan8Yxr9xk8Ua9gib") {
-    return await showHUD("Cannot perform this action on this playlist");
-  }
   const nothingIsPlaying = !currentlyPlayingData || !currentlyPlayingData?.item;
   const isTrack = currentlyPlayingData?.currently_playing_type !== "episode";
 
@@ -43,11 +40,14 @@ export default async function Command() {
     });
     await showHUD(`Added ${currentlyPlayingData.item.name} to ${currentMonthPlaylist.name}`);
 
-    await removePlaylistItems({
-      playlistId: currentPlaylist.split(":")[2],
-      trackUris: [currentlyPlayingData.item.uri],
-    });
-    await showHUD(`Removed ${currentlyPlayingData.item.name} from Processing`);
+    if (currentPlaylist == "spotify:playlist:5Gb7IXan8Yxr9xk8Ua9gib") {
+      // If listening in Processing, remove from Processing playlist
+      await removePlaylistItems({
+        playlistId: currentPlaylist.split(":")[2],
+        trackUris: [currentlyPlayingData.item.uri],
+      });
+      await showHUD(`Removed ${currentlyPlayingData.item.name} from Processing`);
+    }
   } catch (error) {
     await showHUD("Something went wrong");
     console.log("addPlayingSongToMonthlyPlaylist.ts Error:", getError(error));
