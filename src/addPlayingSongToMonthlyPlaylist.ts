@@ -10,6 +10,9 @@ import { getError } from "./helpers/getError";
 import { getUserPlaylists } from "./api/getUserPlaylists";
 import { removePlaylistItems } from "./api/removePlaylistItems";
 
+import dotenv from "dotenv";
+dotenv.config();
+
 const processingPlaylistId = "5Gb7IXan8Yxr9xk8Ua9gib"; // get this from the url of the playlist
 
 export default async function Command() {
