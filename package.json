@@ -356,6 +356,14 @@
       "description": "Add the currently playing song from Processing to the monthly playlist.",
       "mode": "no-view",
       "disabledByDefault": true
+    },
+    {
+      "name": "removePlayingSongFromPlaylist",
+      "title": "Remove Playing Song from Playlist",
+      "subtitle": "Spotify",
+      "description": "Remove the currently playing song from the current playlist.",
+      "mode": "no-view",
+      "disabledByDefault": true
     }
   ],
   "dependencies": {

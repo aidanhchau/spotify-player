@@ -10,6 +10,8 @@ import { getError } from "./helpers/getError";
 import { getUserPlaylists } from "./api/getUserPlaylists";
 import { removePlaylistItems } from "./api/removePlaylistItems";
 
+const processingPlaylistId = "5Gb7IXan8Yxr9xk8Ua9gib"; // get this from the url of the playlist
+
 export default async function Command() {
   await setSpotifyClient();
 
@@ -40,7 +42,7 @@ export default async function Command() {
     });
     await showHUD(`Added ${currentlyPlayingData.item.name} to ${currentMonthPlaylist.name}`);
 
-    if (currentPlaylist == "spotify:playlist:5Gb7IXan8Yxr9xk8Ua9gib") {
+    if (currentPlaylist == `spotify:playlist:${processingPlaylistId}`) {
       // If listening in Processing, remove from Processing playlist
       await removePlaylistItems({
         playlistId: currentPlaylist.split(":")[2],
@@ -52,9 +54,4 @@ export default async function Command() {
     await showHUD("Something went wrong");
     console.log("addPlayingSongToMonthlyPlaylist.ts Error:", getError(error));
   }
-
-  // //print myPlaylistsData
-  // for (let i = 0; i < myPlaylistsData.items.length; i++) {
-  //   console.log(myPlaylistsData.items[i].name);
-  // }
 }
