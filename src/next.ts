@@ -1,4 +1,5 @@
 import { showHUD } from "@raycast/api";
+import { closeMainWindow } from "@raycast/api";
 import { setSpotifyClient } from "./helpers/withSpotifyClient";
 import { getCurrentlyPlaying } from "./api/getCurrentlyPlaying";
 import { skipToNext } from "./api/skipToNext";
@@ -19,6 +20,7 @@ export default async function Command() {
   }
 
   try {
+    await closeMainWindow();
     await skipToNext();
     await showHUD("Skipped to next");
   } catch (error) {
