@@ -1,4 +1,5 @@
 import { showHUD } from "@raycast/api";
+import { closeMainWindow } from "@raycast/api";
 import { getPlaybackState } from "./api/getPlaybackState";
 import { pause } from "./api/pause";
 import { getErrorMessage } from "./helpers/getError";
@@ -21,6 +22,7 @@ export default async function Command() {
     }
   } else {
     try {
+      await closeMainWindow();
       await play();
       await showHUD("Playing");
     } catch (err) {
