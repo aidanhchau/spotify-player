@@ -1,3 +1,7 @@
+/*
+Author: Aidan
+Created: 2024-03
+*/
 import { getErrorMessage } from "../helpers/getError";
 import { getSpotifyClient } from "../helpers/withSpotifyClient";
 
