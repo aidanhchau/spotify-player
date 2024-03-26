@@ -48,7 +48,9 @@ export default async function Command() {
         playlistId: currentPlaylist.split(":")[2],
         trackUris: [currentlyPlayingData.item.uri],
       });
-      await showHUD(`Removed ${currentlyPlayingData.item.name} from Processing`);
+      await showHUD(
+        `Added ${currentlyPlayingData.item.name} to ${currentMonthPlaylist.name} & Removed ${currentlyPlayingData.item.name} from Processing`,
+      );
     }
   } catch (error) {
     await showHUD("Something went wrong");

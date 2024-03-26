@@ -32,7 +32,7 @@ export default async function Command() {
         playlistId: currentPlaylist.split(":")[2],
         trackUris: [currentlyPlayingData.item.uri],
       });
-      await showHUD(`Removed ${currentlyPlayingData.item.name} from Processing`);
+      await showHUD(`Skipped & Removed ${currentlyPlayingData.item.name} from Processing`);
     }
   } catch (error) {
     await showHUD("Nothing is currently playing");
